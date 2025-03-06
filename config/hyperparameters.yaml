@@ -1,0 +1,88 @@
+# Chess AI Hyperparameters Configuration
+
+# Neural Network Parameters
+neural_network:
+  input_channels: 19 # Number of input planes (12 pieces + 7 auxiliary)
+  num_res_blocks: 19 # Number of residual blocks in the network
+  num_filters: 256 # Number of filters in convolutional layers
+  value_head_hidden: 256 # Hidden layer size for value head
+  policy_output_size: 4672 # Size of policy output (possible moves)
+
+# MCTS Parameters
+mcts:
+  c_puct: 1.5 # Exploration constant in PUCT algorithm
+  num_simulations: 800 # Number of MCTS simulations per move
+  dirichlet_alpha: 0.3 # Dirichlet noise alpha parameter
+  dirichlet_epsilon: 0.25 # Dirichlet noise weight at root node
+  temperature_init: 1.0 # Initial temperature for move selection
+  temperature_final: 0.1 # Final temperature after move_temp_threshold
+  move_temp_threshold: 30 # Move number to switch to final temperature
+  virtual_loss: 3 # Virtual loss value for parallel MCTS
+
+# Training Parameters
+training:
+  num_iterations: 100 # Number of training iterations
+  num_self_play_games: 25 # Self-play games per iteration
+  replay_buffer_size: 500000 # Maximum number of positions in replay buffer
+  batch_size: 2048 # Training batch size
+  epochs_per_iteration: 10 # Training epochs per iteration
+  learning_rate: 0.01 # Initial learning rate
+  weight_decay: 0.0001 # L2 regularization parameter
+  lr_step_size: 20 # Number of iterations before learning rate decay
+  lr_gamma: 0.1 # Learning rate decay factor
+  checkpoint_freq: 5 # Save checkpoint every N iterations
+  validation_split: 0.1 # Fraction of data to use for validation
+
+# Loss Function Weights
+loss:
+  value_loss_weight: 1.0 # Weight for value (win probability) loss
+  policy_loss_weight: 1.0 # Weight for policy (move probability) loss
+  l2_weight: 0.0001 # Weight for L2 regularization
+
+# Evaluation Parameters
+evaluation:
+  eval_games: 40 # Number of games to play when evaluating
+  eval_game_cap: 200 # Maximum number of moves in evaluation game
+  eval_threshold: 0.55 # Win rate threshold to accept new model
+  eval_temperature: 0.2 # Temperature for move selection during evaluation
+
+# Vision Parameters
+vision:
+  min_piece_confidence: 0.7 # Minimum confidence score for piece classification
+  board_detection_threshold: 0.8 # Threshold for board detection
+  square_size: 100 # Resolution of extracted square images
+  piece_classifier_size: 64 # Input size for piece classifier
+  detection_interval: 0.5 # Time between board detection attempts (seconds)
+  piece_classes: # Class names for piece classification
+    [
+      "empty",
+      "white_pawn",
+      "white_knight",
+      "white_bishop",
+      "white_rook",
+      "white_queen",
+      "white_king",
+      "black_pawn",
+      "black_knight",
+      "black_bishop",
+      "black_rook",
+      "black_queen",
+      "black_king",
+    ]
+
+# Automation Parameters
+automation:
+  mouse_move_delay: 0.1 # Delay after mouse movements (seconds)
+  polling_interval: 1.0 # Time between game state checks (seconds)
+  platform: "lichess" # Chess platform to use (lichess, chess.com, chess24, custom)
+  click_randomness: 5 # Maximum random offset for clicks (pixels)
+  move_execution_delay: 0.5 # Delay between mouse clicks (seconds)
+  calibration_corners: 5 # Number of corners to average during calibration
+
+# System Parameters
+system:
+  use_gpu: true # Whether to use GPU for neural network inference
+  debug_mode: true # Enable debug output and visualizations
+  log_level: "INFO" # Logging level (DEBUG, INFO, WARNING, ERROR)
+  num_workers: 4 # Number of worker processes/threads
+  random_seed: 42 # Random seed for reproducibility
