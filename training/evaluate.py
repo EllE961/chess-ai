@@ -13,9 +13,9 @@ import numpy as np
 from tqdm import tqdm
 from typing import Dict, List, Tuple, Any, Optional
 
-from ..core.neural_network import ChessNetwork
-from ..core.mcts import MCTS
-from ..core.chess_environment import ChessEnvironment
+from core.neural_network import ChessNetwork
+from core.mcts import MCTS
+from core.chess_environment import ChessEnvironment
 
 logger = logging.getLogger(__name__)
 

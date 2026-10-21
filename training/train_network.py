@@ -17,8 +17,8 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from typing import Dict, List, Tuple, Any, Optional
 
-from ..core.neural_network import ChessNetwork
-from ..core.self_play import SelfPlay
+from core.neural_network import ChessNetwork
+from core.self_play import SelfPlay
 from .data_manager import ReplayBuffer
 from .loss_functions import ChessLoss
 from .evaluate import ModelEvaluator

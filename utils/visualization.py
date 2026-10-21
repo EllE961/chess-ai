@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import chess
 import chess.svg
-from cairosvg import svg2png
 from typing import Dict, List, Tuple, Any, Optional
 import logging
 
@@ -108,7 +107,8 @@ def visualize_board(board: chess.Board,
         # Ensure directory exists
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
         
-        # Convert SVG to PNG and save
+        # Convert SVG to PNG and save (cairosvg needs the native cairo library)
+        from cairosvg import svg2png
         svg2png(bytestring=board_svg.encode('utf-8'), write_to=output_path, output_width=size, output_height=size)
         logger.debug(f"Board visualization saved to {output_path}")
         return output_path
@@ -211,7 +211,8 @@ def visualize_policy(board: chess.Board, policy: Dict[chess.Move, float],
         # Ensure directory exists
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
         
-        # Convert SVG to PNG and save
+        # Convert SVG to PNG and save (cairosvg needs the native cairo library)
+        from cairosvg import svg2png
         svg2png(bytestring=board_svg.encode('utf-8'), write_to=output_path, output_width=size, output_height=size)
         logger.debug(f"Policy visualization saved to {output_path}")
         return output_path

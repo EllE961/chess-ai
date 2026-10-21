@@ -15,7 +15,7 @@ import chess
 import matplotlib.pyplot as plt
 from typing import Dict, List, Tuple, Any, Optional, Union
 
-from ..vision.board_detector import BoardDetector
+from vision.board_detector import BoardDetector
 
 logger = logging.getLogger(__name__)
 
