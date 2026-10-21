@@ -8,6 +8,7 @@
 ![pytorch](https://img.shields.io/badge/pytorch-1.13-d95926?style=flat-square&labelColor=0d0c0b)
 ![tests](https://img.shields.io/badge/tests-51%20of%2070%20passing-3987e5?style=flat-square&labelColor=0d0c0b)
 ![license](https://img.shields.io/badge/license-MIT-1f1d1b?style=flat-square&labelColor=0d0c0b)
+![status](https://img.shields.io/badge/status-experimental-9085e9?style=flat-square&labelColor=0d0c0b)
 
 </div>
 
@@ -34,6 +35,7 @@ flowchart LR
 
 <sub>Green: runs and does what it says. Orange: runs, with a known bug or a narrow working range (details below). Purple: scaffolding without the data, weights or site-specific work it needs.</sub>
 
+This is an experiment and isn't finished: the search has a known sign bug and self-play stores the wrong training targets, so it can't learn chess yet (see Limitations).
 I started this to see how far I could get toward an agent that learns chess by self-play and then plays on a real
 site by reading the screen and moving the mouse, the way a person would. Every stage in the diagram has code, and
 the training loop runs end to end. Nothing has been trained yet, and a few bugs keep the pieces from working as a
